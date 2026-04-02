@@ -41,22 +41,8 @@ http://127.0.0.1:8000
   - Explainable reasons (XAI output)
 
 ## 📂 Project Structure
-phishlens/
-│
-├── app.py
-├── features.py
-├── trusted_store.py
-├── dynamic_trusted.json
-│
-├── static/
-│   ├── app.js
-│   └── style.css
-│
-├── templates/
-│   └── index.html
-│
-├── .gitignore
-└── README.md
+<img width="351" height="491" alt="image" src="https://github.com/user-attachments/assets/60552f8c-3072-4e4b-bc98-f9e86a107e04" />
+
 
 ## ⚠️ Note Model files (.pkl, .keras) are not included due to size limitations. They can be regenerated or provided separately if required. 
 
