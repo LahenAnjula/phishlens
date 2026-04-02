@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Model files (your project)
+feature_names.pkl
+hybrid_fusion_config.pkl
+max_chars.pkl
+phish_model.pkl
+trusted_domains.pkl
+url_tokenizer.pkl
+url_deep_model.keras
+
+# Environment
+.env
+venv/
+
+# OS files
+.DS_Store
+Thumbs.db

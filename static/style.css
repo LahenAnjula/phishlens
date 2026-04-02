@@ -1,0 +1,268 @@
+/* ================= GLOBAL ================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4 {
+  color: #f8fafc;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+  background: #020617;
+  border-right: 1px solid #1e293b;
+}
+
+.sidebar-title {
+  color: #38bdf8;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+/* ================= NAV BUTTONS ================= */
+
+.nav-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #0f172a;
+  color: #e2e8f0;
+  border: none;
+  border-radius: 8px;
+  text-align: left;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  background: #1e293b;
+}
+
+.nav-btn.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* ================= MAIN ================= */
+
+.main-content {
+  background: #0f172a;
+}
+
+/* ================= CARD ================= */
+
+.custom-card {
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  color: #e2e8f0;
+}
+
+/* ================= INPUT ================= */
+
+.custom-input {
+  background: #0f172a;
+  color: #ffffff;
+  border: 1px solid #334155;
+}
+
+.custom-input:focus {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: none;
+}
+
+.custom-input::placeholder {
+  color: #64748b;
+}
+
+/* ================= BUTTON ================= */
+
+.action-btn {
+  padding: 10px 15px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 500;
+}
+
+.action-btn:hover {
+  background: #1d4ed8;
+}
+
+.secondary-btn {
+  background: #475569;
+}
+
+.secondary-btn:hover {
+  background: #334155;
+}
+
+/* ================= STATUS ================= */
+
+.status {
+  background: #020617;
+  color: #22c55e;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ================= RESULT CARD ================= */
+
+.result-card {
+  background: #020617;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  border: 1px solid #1e293b;
+
+  /* FORCE TEXT WHITE */
+  color: #ffffff !important;
+}
+
+/* Fix ALL inner text visibility */
+.result-card p,
+.result-card li,
+.result-card small,
+.result-card span,
+.result-card strong {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Slightly softer bullet text (optional nice UI) */
+.result-card li {
+  color: #e2e8f0 !important;
+}
+
+/* ================= RESULT HEADER ================= */
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ================= BADGES ================= */
+
+.badge {
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* PHISHING */
+.badge.phishing {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444 !important;
+}
+
+/* LEGIT */
+.badge.legit {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e !important;
+}
+
+/* ================= RISK LEVEL ================= */
+
+.risk {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.risk.low {
+  color: #22c55e !important;
+}
+
+.risk.medium {
+  color: #facc15 !important;
+}
+
+.risk.high {
+  color: #ef4444 !important;
+}
+
+/* ================= TABLE ================= */
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+td {
+  color: #ffffff;
+}
+
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid #1e293b;
+}
+
+/* ================= FILTER BUTTON ================= */
+
+.filter-btn {
+  background: #0f172a;
+  color: #e2e8f0;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background: #2563eb;
+  color: white;
+}
+
+/* ================= PAGINATION ================= */
+
+.history-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* ================= TABS ================= */
+
+.tab-section {
+  display: none;
+}
+
+.tab-section.active {
+  display: block;
+}

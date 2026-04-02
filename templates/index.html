@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhishLens AI</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row min-vh-100">
+        <!-- SIDEBAR -->
+        <aside class="col-12 col-md-3 col-lg-2 sidebar p-3">
+          <h1 class="sidebar-title mb-4">PhishLens</h1>
+
+          <div class="d-grid gap-2">
+            <button class="nav-btn active" onclick="showTab('singleTab', this)">
+              Single Scan
+            </button>
+            <button class="nav-btn" onclick="showTab('batchTab', this)">
+              Batch Scan
+            </button>
+            <button class="nav-btn" onclick="showTab('uploadTab', this)">
+              CSV Upload
+            </button>
+            <button class="nav-btn" onclick="showTab('historyTab', this)">
+              History
+            </button>
+            <button class="nav-btn" onclick="showTab('modelTab', this)">
+              Model Info
+            </button>
+          </div>
+
+          <div id="apiStatus" class="status mt-4">Checking...</div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="col-12 col-md-9 col-lg-10 main-content p-3 p-md-4">
+          <!-- SINGLE SCAN -->
+          <section id="singleTab" class="tab-section active">
+            <div class="card custom-card">
+              <div class="card-body">
+                <h3 class="mb-3">Scan a URL</h3>
+
+                <input
+                  type="text"
+                  id="urlInput"
+                  class="form-control custom-input"
+                  placeholder="Enter URL"
+                />
+
+                <div class="mt-3 d-grid d-sm-block">
+                  <button class="action-btn" onclick="scanSingleURL()">
+                    Scan
+                  </button>
+                </div>
+
+                <div id="singleResult"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- BATCH SCAN -->
+          <section id="batchTab" class="tab-section">
+            <div class="card custom-card">
+              <div class="card-body">
+                <h3 class="mb-3">Batch Scan</h3>
+
+                <textarea
+                  id="batchInput"
+                  class="form-control custom-input"
+                  rows="8"
+                  placeholder="Enter URLs (one per line)"
+                ></textarea>
+
+                <div class="row g-2 mt-2">
+                  <div class="col-12 col-sm-auto">
+                    <button class="action-btn w-100" onclick="runBatchScan()">
+                      Run Batch Scan
+                    </button>
+                  </div>
+                  <div class="col-12 col-sm-auto">
+                    <button
+                      class="action-btn secondary-btn w-100"
+                      onclick="clearBatch()"
+                    >
+                      Clear
+                    </button>
+                  </div>
+                </div>
+
+                <div id="batchResult"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- CSV UPLOAD -->
+          <section id="uploadTab" class="tab-section">
+            <div class="card custom-card">
+              <div class="card-body">
+                <h3 class="mb-3">Upload CSV</h3>
+
+                <input
+                  type="file"
+                  id="csvFile"
+                  accept=".csv"
+                  class="form-control custom-input"
+                />
+
+                <div class="mt-3 d-grid d-sm-block">
+                  <button class="action-btn" onclick="uploadCSV()">
+                    Upload &amp; Scan
+                  </button>
+                </div>
+
+                <div id="uploadResult"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- HISTORY -->
+          <section id="historyTab" class="tab-section">
+            <div class="card custom-card">
+              <div class="card-body">
+                <div
+                  class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2 mb-3"
+                >
+                  <h3 class="mb-0">Scan History</h3>
+                  <button
+                    class="action-btn secondary-btn"
+                    onclick="clearHistory()"
+                  >
+                    Clear History
+                  </button>
+                </div>
+
+                <div class="row g-2 mb-3">
+                  <div class="col-12 col-sm-auto">
+                    <button
+                      class="filter-btn active w-100"
+                      onclick="setHistoryFilter('ALL', this)"
+                    >
+                      All
+                    </button>
+                  </div>
+                  <div class="col-12 col-sm-auto">
+                    <button
+                      class="filter-btn w-100"
+                      onclick="setHistoryFilter('PHISHING', this)"
+                    >
+                      Phishing
+                    </button>
+                  </div>
+                  <div class="col-12 col-sm-auto">
+                    <button
+                      class="filter-btn w-100"
+                      onclick="setHistoryFilter('LEGIT', this)"
+                    >
+                      Legitimate
+                    </button>
+                  </div>
+                </div>
+
+                <div id="historyContainer"></div>
+
+                <div
+                  class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-2 mt-4"
+                >
+                  <button
+                    class="action-btn secondary-btn"
+                    onclick="prevHistoryPage()"
+                  >
+                    Previous
+                  </button>
+                  <span id="historyPageInfo" class="fw-bold">Page 1</span>
+                  <button
+                    class="action-btn secondary-btn"
+                    onclick="nextHistoryPage()"
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- MODEL INFO -->
+          <section id="modelTab" class="tab-section">
+            <div class="card custom-card">
+              <div class="card-body">
+                <h3 class="mb-3">Model Information</h3>
+                <div id="modelInfo"></div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
